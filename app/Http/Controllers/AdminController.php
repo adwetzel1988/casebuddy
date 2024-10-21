@@ -19,10 +19,13 @@ class AdminController extends Controller
         $complaints = Complaint::all();
         $stats = [
             'total' => $complaints->count(),
-            'pending' => $complaints->where('status', 'pending')->count(),
-            'in_progress' => $complaints->where('status', 'in_progress')->count(),
-            'submitted' => $complaints->where('status', 'submitted')->count(),
-            'completed' => $complaints->where('status', 'completed')->count(),
+            'report_made' => $complaints->where('status', 'report_made')->count(),
+            'detective_assigned' => $complaints->where('status', 'detective_assigned')->count(),
+            'under_investigation' => $complaints->where('status', 'under_investigation')->count(),
+            'warrant_issued' => $complaints->where('status', 'warrant_issued')->count(),
+            'arrest_made' => $complaints->where('status', 'arrest_made')->count(),
+            'transferred_to_district_attorney' => $complaints->where('status', 'transferred_to_district_attorney')->count(),
+            'closed' => $complaints->where('status', 'closed')->count(),
         ];
 
         $latestMessages = Message::latest()->take(5)->get();
@@ -74,8 +77,7 @@ class AdminController extends Controller
     public function updateStatus(Request $request, Complaint $complaint)
     {
         $validatedData = $request->validate([
-            'status' => 'required|in:pending,in_progress,submitted,under_review,completed,other',
-            'action_taken' => 'required_if:status,other|nullable|string|max:1000',
+            'status' => 'required|in:report_made,detective_assigned,under_investigation,warrant_issued,arrest_made,transferred_to_district_attorney,closed',
         ]);
 
         if ($complaint->status === 'completed') {

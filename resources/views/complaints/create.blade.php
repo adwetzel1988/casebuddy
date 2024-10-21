@@ -74,10 +74,6 @@
                                 <label for="first_name" class="form-label">Name</label>
                                 <input type="text" class="form-control" id="officer_name" name="officer_name" value="{{ old('officer_name') }}" required>
                             </div>
-                            <div class="mb-3">
-                                <label for="first_name" class="form-label">Phone Number</label>
-                                <input type="text" class="form-control" id="officer_badge_number" name="officer_badge_number" value="{{ old('officer_badge_number') }}" required>
-                            </div>
                         </div>
                     </div>
 
@@ -93,8 +89,22 @@
                                 <input type="datetime-local" class="form-control" id="incident_date" name="incident_date" value="{{ old('incident_date') }}" required>
                             </div>
                             <div class="mb-3">
-                                <label for="court_name" class="form-label">Court Name</label>
-                                <input type="text" class="form-control" id="court_name" name="court_name" value="{{ old('court_name') }}" required>
+                                <label for="offence_date" class="form-label">Offense Date</label>
+                                <input type="datetime-local" class="form-control" id="offence_date" name="offence_date" value="{{ old('offence_date') }}" required>
+                            </div>
+
+                            <h5>Detective</h5>
+                            <div class="mb-3">
+                                <label for="detective_name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="detective_name" name="detective_name" value="{{ old('detective_name') }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="detective_phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="detective_phone" name="detective_phone" value="{{ old('detective_phone') }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="detective_email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="detective_email" name="detective_email" value="{{ old('detective_email') }}" required>
                             </div>
                         </div>
                     </div>

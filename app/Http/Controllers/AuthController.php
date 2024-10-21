@@ -65,13 +65,12 @@ class AuthController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        $user = User::create([
+        User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'password' => Hash::make($validatedData['password']),
+            'role' => 'subadmin',
         ]);
-
-        Auth::login($user);
 
         return redirect('/');
     }

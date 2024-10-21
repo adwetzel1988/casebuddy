@@ -24,9 +24,6 @@
                         @endif
                         <p class="card-text"><strong>Created By:</strong> {{ $complaint->user->name ?? 'Anonymous' }}</p>
                         <p class="card-text"><strong>Court Name:</strong> {{ $complaint->court_name }}</p>
-                        @if(!is_null($complaint->assignedTo))
-                            <p class="card-text"><strong>Assigned to:</strong> {{ $complaint->assignedTo->name }}</p>
-                        @endif
                         <p class="card-text"><strong>Description:</strong> {{ $complaint->description }}</p>
                         <p class="card-text"><strong>Incident Date:</strong> {{ $complaint->incident_date }}</p>
                         @if(!is_null($complaint->city))
@@ -37,6 +34,7 @@
                         <h6 class="mt-4">Case Information</h6>
                         <p class="card-text"><strong>Victim:</strong> {{ $complaint->victim->name ?? '' }}</p>
                         <p class="card-text"><strong>Defendant:</strong> {{ $complaint->officer->name ?? '' }}</p>
+                        <p class="card-text"><strong>Prosecutor</strong> {{ $complaint->assignedTo?->name }}</p>
                         <h6 class="mt-4">Charges</h6>
                         <table class="table">
                             <thead>
@@ -77,9 +75,9 @@
                     <form action="{{ route('admin.complaints.assign', $complaint) }}" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label for="assigned_to" class="form-label">Assign to Subadmin</label>
+                            <label for="assigned_to" class="form-label">Assign to Prosecutor</label>
                             <select class="form-control" id="assigned_to" name="assigned_to" required>
-                                <option value="">Select Subadmin</option>
+                                <option value="">Select Prosecutor</option>
                                 @foreach($subadmins as $subadmin)
                                     <option value="{{ $subadmin->id }}" {{ $complaint->assigned_to == $subadmin->id ? 'selected' : '' }}>
                                         {{ $subadmin->name }}
@@ -93,7 +91,7 @@
             </div>
         @endif
 
-        @if($complaint->status !== 'completed')
+        @if($complaint->status !== 'closed')
             <div class="card mb-4">
                 <div class="card-body">
                     <h2 class="card-title mb-3">Update Status</h2>
@@ -103,22 +101,13 @@
                             <div class="mb-3">
                                 <label for="status" class="form-label">Status</label>
                                 <select class="form-control" id="status" name="status" required {{ $complaint->status === 'completed' ? 'disabled' : '' }}>
-                                    <option value="pending" {{ $complaint->status === 'pending' ? 'selected' : '' }}>Pending
-                                    </option>
-                                    <option value="in_progress" {{ $complaint->status === 'in_progress' ? 'selected' : '' }}>In
-                                        Progress
-                                    </option>
-                                    <option value="submitted" {{ $complaint->status === 'submitted' ? 'selected' : '' }}>Submitted
-                                    </option>
-                                    <option value="under_review" {{ $complaint->status === 'under_review' ? 'selected' : '' }}>
-                                        Under Review
-                                    </option>
-                                    <option value="completed" {{ $complaint->status === 'completed' ? 'selected' : '' }}>
-                                        Completed
-                                    </option>
-                                    <option value="other" {{ !in_array($complaint->status, ['pending', 'in_progress', 'submitted', 'under_review', 'completed']) ? 'selected' : '' }}>
-                                        Other
-                                    </option>
+                                    <option value="report_made" {{ $complaint->status === 'report_made' ? 'selected' : '' }}>Report Made</option>
+                                    <option value="detective_assigned" {{ $complaint->status === 'detective_assigned' ? 'selected' : '' }}>Detective Assigned</option>
+                                    <option value="under_investigation" {{ $complaint->status === 'under_investigation' ? 'selected' : '' }}>Under Investigation</option>
+                                    <option value="warrant_issued" {{ $complaint->status === 'warrant_issued' ? 'selected' : '' }}>Warrant Issued</option>
+                                    <option value="arrest_made" {{ $complaint->status === 'arrest_made' ? 'selected' : '' }}>Arrest Made</option>
+                                    <option value="transferred_to_district_attorney" {{ $complaint->status === 'transferred_to_district_attorney' ? 'selected' : '' }}>Transferred to District Attorney</option>
+                                    <option value="closed" {{ $complaint->status === 'closed' ? 'selected' : '' }}>Closed</option>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary">
@@ -208,16 +197,6 @@
 
       if (!['pending', 'in_progress', 'submitted', 'under_review', 'completed'].includes(status)) {
 
-        if (!actionTakenField) {
-          actionTakenField = document.createElement('div');
-          actionTakenField.className = 'mb-3';
-          actionTakenField.id = 'actionTakenField';
-          actionTakenField.innerHTML = `
-                <label for="action_taken" class="form-label">Specify other</label>
-                <input class="form-control" id="action_taken" name="action_taken"" value="{{ $complaint->status }}" />
-            `;
-          form.insertBefore(actionTakenField, form.querySelector('button'));
-        }
       } else {
         if (actionTakenField) {
           actionTakenField.remove();

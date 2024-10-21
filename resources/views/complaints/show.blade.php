@@ -18,9 +18,6 @@
                     @endif
                     <p class="card-text"><strong>Created By:</strong> {{ $complaint->user->name ?? 'Anonymous' }}</p>
                     <p class="card-text"><strong>Court Name:</strong> {{ $complaint->court_name }}</p>
-                    @if(!is_null($complaint->assignedTo))
-                        <p class="card-text"><strong>Assigned to:</strong> {{ $complaint->assignedTo->name }}</p>
-                    @endif
                     <p class="card-text"><strong>Description:</strong> {{ $complaint->description }}</p>
                     <p class="card-text"><strong>Incident Date:</strong> {{ $complaint->incident_date }}</p>
                     @if(!is_null($complaint->city))
@@ -31,6 +28,7 @@
                     <h6 class="mt-4">Case Information</h6>
                     <p class="card-text"><strong>Victim:</strong> {{ $complaint->victim->name ?? '' }}</p>
                     <p class="card-text"><strong>Defendant:</strong> {{ $complaint->officer->name ?? '' }}</p>
+                    <p class="card-text"><strong>Prosecutor</strong> {{ $complaint->assignedTo?->name }}</p>
                     <h6 class="mt-4">Charges</h6>
                     <table class="table">
                         <thead>

@@ -12,61 +12,83 @@
 
     <h1>Admin Dashboard</h1>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <a href="{{ route('admin.complaints.index') }}" class="card-link">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Total Reports</h5>
+                        <h5 class="card-title">Total Cases</h5>
                         <p class="card-text">{{ $stats['total'] }}</p>
                     </div>
                 </div>
             </a>
         </div>
-        <div class="col-md-3">
-            <a href="{{ route('admin.complaints.index', ['status' => 'pending']) }}" class="card-link">
+        <div class="col-md-4">
+            <a href="{{ route('admin.complaints.index', ['status' => 'detective_assigned']) }}" class="card-link">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Pending Reports</h5>
-                        <p class="card-text">{{ $stats['pending'] }}</p>
+                        <h5 class="card-title">Detective Assigned Cases</h5>
+                        <p class="card-text">{{ $stats['detective_assigned'] }}</p>
                     </div>
                 </div>
             </a>
         </div>
-        <div class="col-md-3">
-            <a href="{{ route('admin.complaints.index', ['status' => 'in_progress']) }}" class="card-link">
+        <div class="col-md-4">
+            <a href="{{ route('admin.complaints.index', ['status' => 'under_investigation']) }}" class="card-link">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">In Progress Reports</h5>
-                        <p class="card-text">{{ $stats['in_progress'] }}</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-3">
-            <a href="{{ route('admin.complaints.index', ['status' => 'submitted']) }}" class="card-link">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Submitted Reports</h5>
-                        <p class="card-text">{{ $stats['submitted'] }}</p>
+                        <h5 class="card-title">Under Investigation Cases</h5>
+                        <p class="card-text">{{ $stats['under_investigation'] }}</p>
                     </div>
                 </div>
             </a>
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col-md-3">
-            <a href="{{ route('admin.complaints.index', ['status' => 'completed']) }}" class="card-link">
+        <div class="col-md-4">
+            <a href="{{ route('admin.complaints.index', ['status' => 'warrant_issued']) }}" class="card-link">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Completed Reports</h5>
-                        <p class="card-text">{{ $stats['completed'] }}</p>
+                        <h5 class="card-title">Warrant Issued Cases</h5>
+                        <p class="card-text">{{ $stats['warrant_issued'] }}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="{{ route('admin.complaints.index', ['status' => 'arrest_made']) }}" class="card-link">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Arrest Made Cases</h5>
+                        <p class="card-text">{{ $stats['arrest_made'] }}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="{{ route('admin.complaints.index', ['status' => 'transferred_to_district_attorney']) }}" class="card-link">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Transferred to D.A. Cases</h5>
+                        <p class="card-text">{{ $stats['transferred_to_district_attorney'] }}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <a href="{{ route('admin.complaints.index', ['status' => 'closed']) }}" class="card-link">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Closed Cases</h5>
+                        <p class="card-text">{{ $stats['closed'] }}</p>
                     </div>
                 </div>
             </a>
         </div>
     </div>
     <div class="mt-4">
-        <a href="{{ route('admin.complaints.index') }}" class="btn btn-primary">View All Reports</a>
+        <a href="{{ route('admin.complaints.index') }}" class="btn btn-primary">View All Cases</a>
     </div>
 
     <div class="mt-4">
