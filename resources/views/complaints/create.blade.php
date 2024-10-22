@@ -74,11 +74,7 @@
                                 <label for="first_name" class="form-label">Name</label>
                                 <input type="text" class="form-control" id="officer_name" name="officer_name" value="{{ old('officer_name') }}" required>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="card mb-4">
-                        <div class="card-body">
                             <h5 class="card-title">Case Details</h5>
                             <div class="mb-3">
                                 <label for="description" class="form-label">Description</label>
@@ -106,11 +102,7 @@
                                 <label for="detective_email" class="form-label">Email Address</label>
                                 <input type="email" class="form-control" id="detective_email" name="detective_email" value="{{ old('detective_email') }}" required>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="card mb-4">
-                        <div class="card-body">
                             <h5 class="card-title">Criminal Charges</h5>
                             <div id="witnesses" class="row">
                                 <div class="witness row mb-3">
@@ -119,7 +111,7 @@
                                         <input type="text" class="form-control" id="witness_name_0" name="witnesses[0][name]" value="{{ old('witnesses.0.name') }}">
                                     </div>
                                     <div class="witness mb-3 col-md-5">
-                                        <label for="witness_contact_0" class="form-label">Docket Number</label>
+                                        <label for="witness_contact_0" class="form-label">Report Number</label>
                                         <input type="tel" class="form-control" id="witness_contact_0" name="witnesses[0][contact]" value="{{ old('witnesses.0.contact') }}">
                                     </div>
                                 </div>
@@ -170,7 +162,7 @@
                     <input type="text" class="form-control" id="witness_name_${witnessIndex}" name="witnesses[${witnessIndex}][name]">
                 </div>
                 <div class="witness mb-3 col-md-5">
-                    <label for="witness_contact_${witnessIndex}" class="form-label">Docket Number</label>
+                    <label for="witness_contact_${witnessIndex}" class="form-label">Report Number</label>
                     <input type="tel" class="form-control" id="witness_contact_${witnessIndex}" name="witnesses[${witnessIndex}][contact]">
                 </div>
                 <div class="col-md-1 d-flex align-items-center justify-content-center">

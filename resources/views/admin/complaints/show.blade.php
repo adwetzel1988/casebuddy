@@ -75,9 +75,9 @@
                     <form action="{{ route('admin.complaints.assign', $complaint) }}" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label for="assigned_to" class="form-label">Assign to Prosecutor</label>
+                            <label for="assigned_to" class="form-label">Assign to Detective</label>
                             <select class="form-control" id="assigned_to" name="assigned_to" required>
-                                <option value="">Select Prosecutor</option>
+                                <option value="">Select Detective</option>
                                 @foreach($subadmins as $subadmin)
                                     <option value="{{ $subadmin->id }}" {{ $complaint->assigned_to == $subadmin->id ? 'selected' : '' }}>
                                         {{ $subadmin->name }}

@@ -30,7 +30,7 @@
                 </div>
             </div>
 
-            @if(auth()->check() && str_contains(auth()->user()->role, 'admin'))
+            @if(auth()->check() && auth()->user()->role === 'admin')
                 <div class="text-center mb-5"> <!-- Added mb-5 for more bottom margin -->
                     <a href="{{ route('complaints.create') }}" class="btn btn-danger btn-lg">Create a Case</a>
                 </div>

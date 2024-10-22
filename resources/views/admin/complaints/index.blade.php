@@ -50,14 +50,12 @@
     <table class="table" id="complaintsTable">
         <thead>
             <tr>
-                <th>Docket Number</th>
+                <th>Case Number</th>
                 <th>Charges</th>
                 <th>Detective Name</th>
-                <th>Court Name</th>
                 <th>Victim</th>
                 <th>Defendant</th>
                 <th>Status</th>
-                <th>Prosecutor</th>
                 <th>Closed Date</th>
                 <th>Actions</th>
             </tr>
@@ -69,11 +67,9 @@
                     <td>{{ $charges->contact }}</td>
                     <td>{{ $charges->name }}</td>
                     <td>{{ $charges->complaint?->detective_name }}</td>
-                    <td>{{ $charges->complaint->court_name ?? '' }}</td>
                     <td>{{ $charges->complaint->victim->name ?? '' }}</td>
                     <td>{{ $charges->complaint->officer->name ?? 'N/A' }}</td>
                     <td>{{ \Illuminate\Support\Str::headline($charges->complaint->status) }}</td>
-                    <td>{{ $complaint->assignedTo?->name }}</td>
                     <td>
                         @if($charges->complaint->status === 'completed')
                             {{ $charges->complaint->updated_at }}
