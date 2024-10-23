@@ -89,20 +89,6 @@
                                 <input type="datetime-local" class="form-control" id="offence_date" name="offence_date" value="{{ old('offence_date') }}" required>
                             </div>
 
-                            <h5>Detective</h5>
-                            <div class="mb-3">
-                                <label for="detective_name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="detective_name" name="detective_name" value="{{ old('detective_name') }}" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="detective_phone" class="form-label">Phone Number</label>
-                                <input type="tel" class="form-control" id="detective_phone" name="detective_phone" value="{{ old('detective_phone') }}" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="detective_email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="detective_email" name="detective_email" value="{{ old('detective_email') }}" required>
-                            </div>
-
                             <h5 class="card-title">Criminal Charges</h5>
                             <div id="witnesses" class="row">
                                 <div class="witness row mb-3">
@@ -117,6 +103,21 @@
                                 </div>
                             </div>
                             <button type="button" class="btn btn-secondary" id="addWitness">Add Another Charge</button>
+
+
+                            <h5 class="mt-4">Detective</h5>
+                            <div class="mb-3">
+                                <label for="detective_name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="detective_name" name="detective_name" value="{{ old('detective_name') }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="detective_phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="detective_phone" name="detective_phone" value="{{ old('detective_phone') }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="detective_email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="detective_email" name="detective_email" value="{{ old('detective_email') }}" required>
+                            </div>
                         </div>
                     </div>
 
@@ -131,7 +132,7 @@
                     </div>
 
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary btn-lg">Submit Report</button>
+                        <button type="submit" class="btn btn-primary btn-lg">Create Case</button>
                     </div>
                 </form>
             </div>

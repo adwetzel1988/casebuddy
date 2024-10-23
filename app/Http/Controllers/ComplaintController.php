@@ -18,6 +18,14 @@ class ComplaintController extends Controller
 {
     public function create()
     {
+        if (auth()->guest()) {
+            return redirect()->route('login');
+        }
+
+        if (!str_contains(auth()->user()->role, 'admin')) {
+            return redirect()->route('login');
+        }
+
         $states = State::with('cities')->get();
         return view('complaints.create', compact('states'));
     }
@@ -130,6 +138,14 @@ class ComplaintController extends Controller
 
     public function searchForm()
     {
+        if (auth()->guest()) {
+            return redirect()->route('login');
+        }
+
+        if (str_contains(auth()->user()->role, 'admin')) {
+            return redirect()->route('login');
+        }
+
         return view('complaints.search');
     }
 

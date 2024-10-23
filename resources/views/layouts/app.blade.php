@@ -43,6 +43,9 @@
                     @auth
                         @if(auth()->check() && auth()->user()->role === 'admin')
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('complaints.search') }}">Search Cases</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.complaints.index') }}">All Cases</a>
                             </li>
                             <li class="nav-item">
@@ -52,6 +55,9 @@
                                 <a class="nav-link" href="{{ route('register') }}">Create an Account</a>
                             </li>
                         @elseif(auth()->user()->role === 'subadmin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('complaints.search') }}">Search Cases</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.complaints.index') }}">Assigned Cases</a>
                             </li>
@@ -63,9 +69,6 @@
                             </form>
                         </li>
                     @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('complaints.search') }}">Search Cases</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">Login</a>
                         </li>
